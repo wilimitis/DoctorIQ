@@ -21,6 +21,7 @@ ReactDOM.render(
     <Router>
       <MuiThemeProvider>
         <Card className="Login-card">
+          <h2>Welcome to DoctorIQ</h2>
           <Login />
         </Card>
       </MuiThemeProvider>
