@@ -20,3 +20,7 @@ body {
 .Patient-search-box {
   width: 100% !important;
 }
+
+.Patient-table {
+  margin-top: 1em;
+}

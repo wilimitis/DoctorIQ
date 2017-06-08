@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { Card } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import 'react-table/react-table.css'
 
 const PatientTable = props => {
   const {
@@ -14,17 +16,25 @@ const PatientTable = props => {
     <Card className="Patient-table">
       <div className="table-wrap">
         <ReactTable
-          className="-striped -highlight"
+          className="-highlight"
           columns={[{
             Header: 'Name',
             accessor: 'name'
           }, {
             Header: 'Age',
             accessor: 'age'
+          }, {
+            Header: 'Action',
+            accessor: 'action',
+            width: 100,
+            Cell: row => (
+              <RaisedButton>
+                Detail
+              </RaisedButton> 
+            )
           }]}
           manual
           defaultPageSize={10}
-          filterable
           data={data}
           pages={pages}
           loading={loading}

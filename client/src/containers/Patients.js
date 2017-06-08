@@ -6,18 +6,40 @@ import PatientTable from '../components/PatientTable';
 
 const Patients = props => {
   const {
-    handleChange
+    handleChange,
+    data,
+    pages,
+    loading,
+    fetchData
   } = props;
 
   return (
     <div>
-      <PatientSearch handleChange={handleChange}/>
+      <PatientSearch handleChange={handleChange} />
+      <PatientTable 
+        data={data} 
+        pages={pages} 
+        loading={loading} 
+        fetchData={fetchData}
+      />
     </div>
   );
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    data: [
+      {
+        name: 'ksjfn',
+        age: '2342'
+      },
+      {
+        name: 'asdasd',
+        age: '6243'
+      }
+    ],
+    pages: null,
+    loading: false
   };
 };
 
