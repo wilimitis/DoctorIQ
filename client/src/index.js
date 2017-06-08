@@ -9,23 +9,21 @@ import {
   withRouter
 } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Card } from 'material-ui/Card';
-import store from './reducers/store';
+import configureStore from './reducers/configureStore';
 import Login from './containers/Login';
 import './index.css';
 
 const root = document.getElementById('root');
 
+const store = configureStore();
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <MuiThemeProvider>
-        <Card className="Login-card">
-          <h2>Welcome to DoctorIQ</h2>
-          <Login />
-        </Card>
-      </MuiThemeProvider>
-    </Router>
+    <MuiThemeProvider>
+      <Router>
+        <Route path="/" component={Login} />
+      </Router>
+    </MuiThemeProvider>
   </Provider>,
   root,
 );

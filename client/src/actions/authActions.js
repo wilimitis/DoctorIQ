@@ -3,11 +3,17 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export function loginSubmit(req) {
-  return { type: LOGIN_SUBMIT, req };
+  console.log(req);
+  return dispatch => {
+    return fetch('users')
+      .then(res => res.json())
+      .then(json => dispatch(loginSuccess(json)))
+      .catch(err => dispatch(loginFailure('error')));
+  };
 };
 
-export function loginFailure(res) {
-  return { type: LOGIN_FAILURE, res };
+export function loginFailure(err) {
+  return { type: LOGIN_FAILURE, err };
 };
 
 export function loginSuccess(res) {
