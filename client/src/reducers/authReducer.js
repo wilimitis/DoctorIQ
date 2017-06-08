@@ -4,6 +4,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_SUCCESS
 } from '../actions/authActions';
+import { BrowserRouter } from 'react-router-dom';
 
 const initialState = {
 };
@@ -18,7 +19,8 @@ function authReducer(state = initialState, action) {
       });
     case LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        token: action.res
+        token: action.res,
+        isAuthenticated: true
       });
     default:
       return state;

@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 3em;
   padding: 0;
   font-family: sans-serif;
 }
@@ -10,6 +10,13 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 20em;
-  margin: 3em;
   text-align: center;
+}
+
+.Patient-search {
+  padding: 1em;
+}
+
+.Patient-search-box {
+  width: 100% !important;
 }
