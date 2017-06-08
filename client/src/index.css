@@ -17,10 +17,14 @@ body {
   padding: 1em;
 }
 
-.Patient-search-box {
+.Patient-search-input {
   width: 100% !important;
 }
 
 .Patient-table {
   margin-top: 1em;
+}
+
+.table-filter-input {
+  width: 100%;
 }

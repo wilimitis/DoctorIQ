@@ -1,26 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { patientSearchSubmit } from '../actions/patientSearchActions';
-import PatientSearch from '../components/PatientSearch';
-import PatientTable from '../components/PatientTable';
+import PatientSearchInput from '../components/PatientSearchInput';
+import PatientSearchTable from '../components/PatientSearchTable';
 
 const Patients = props => {
   const {
     handleChange,
     data,
-    pages,
-    loading,
-    fetchData
+    loading
   } = props;
 
   return (
     <div>
-      <PatientSearch handleChange={handleChange} />
-      <PatientTable 
-        data={data} 
-        pages={pages} 
-        loading={loading} 
-        fetchData={fetchData}
+      <h2>Patients</h2>
+      <PatientSearchInput handleChange={handleChange} />
+      <PatientSearchTable
+        data={data}
+        loading={loading}
       />
     </div>
   );
@@ -28,18 +25,8 @@ const Patients = props => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    data: [
-      {
-        name: 'ksjfn',
-        age: '2342'
-      },
-      {
-        name: 'asdasd',
-        age: '6243'
-      }
-    ],
-    pages: null,
-    loading: false
+    data: state.patientSearch.patients,
+    loading: state.patientSearch.isLoading
   };
 };
 

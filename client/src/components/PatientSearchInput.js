@@ -6,11 +6,11 @@ const PatientSearch = props => {
   const {
     handleChange
   } = props;
-  
+
   return (
     <Card className="Patient-search">
-      <TextField 
-        className="Patient-search-box" 
+      <TextField
+        className="Patient-search-input"
         hintText="Search for a patient"
         onChange={handleChange}
       />

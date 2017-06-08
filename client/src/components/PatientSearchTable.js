@@ -8,8 +8,7 @@ const PatientTable = props => {
   const {
     data,
     pages,
-    loading,
-    fetchData
+    loading
   } = props;
 
   return (
@@ -19,7 +18,7 @@ const PatientTable = props => {
           className="-highlight"
           columns={[{
             Header: 'Name',
-            accessor: 'name'
+            accessor: 'name',
           }, {
             Header: 'Age',
             accessor: 'age'
@@ -30,15 +29,13 @@ const PatientTable = props => {
             Cell: row => (
               <RaisedButton>
                 Detail
-              </RaisedButton> 
+              </RaisedButton>
             )
           }]}
-          manual
+          sortable={false}
           defaultPageSize={10}
           data={data}
-          pages={pages}
           loading={loading}
-          onFetchData={fetchData}
         />
       </div>
     </Card>

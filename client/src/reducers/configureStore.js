@@ -3,11 +3,13 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import thunkMiddleware from 'redux-thunk';
 import authReducer from './authReducer';
+import patientSearchReducer from './patientSearchReducer';
 import patientSearchEpic from '../epics/patientSearchEpic';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   form: reduxFormReducer,
+  patientSearch: patientSearchReducer
 });
 
 const rootEpic = combineEpics(
