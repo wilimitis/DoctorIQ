@@ -8,17 +8,17 @@ import LoginForm from '../components/LoginForm';
 const Login = props => {
   const {
     isAuthenticated,
-    onSubmit,
+    handleSubmit,
     error
   } = props;
 
   return (
     isAuthenticated ? (
-      <Redirect to="/patient-search" />
+      <Redirect to="/patients" />
     ) : (
     <Card className="Login-card">
       <h2>Welcome to DoctorIQ</h2>
-      <LoginForm onSubmit={onSubmit}/>
+      <LoginForm onSubmit={handleSubmit}/>
       {
         error ? (
           <p>
@@ -40,7 +40,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSubmit: (values) => {
+    handleSubmit: (values) => {
       dispatch(loginSubmit(values));
     }
   };

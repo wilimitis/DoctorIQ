@@ -11,7 +11,7 @@ import {
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import configureStore from './reducers/configureStore';
 import Login from './containers/Login';
-import PatientSearch from './components/PatientSearch';
+import Patients from './containers/Patients';
 import './index.css';
 
 const root = document.getElementById('root');
@@ -23,8 +23,8 @@ ReactDOM.render(
     <MuiThemeProvider>
       <Router>
         <div>
-          <Route path="/" component={Login} />
-          <Route path="/patient-search" component={PatientSearch} />
+          <Route exact path="/" component={Login} />
+          <Route path="/patients" component={Patients} />
         </div>
       </Router>
     </MuiThemeProvider>
