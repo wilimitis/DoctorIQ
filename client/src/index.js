@@ -1,8 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from 'react-router-dom';
+import store from './reducers/store';
+import LoginPage from './containers/LoginPage';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const root = document.getElementById('root');
+
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+      <LoginPage />
+    </div>
+  </Provider>,
+  root,
+);
