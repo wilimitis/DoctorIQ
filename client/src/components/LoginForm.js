@@ -1,5 +1,17 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import TextField from 'material-ui/TextField'
+import './LoginForm.css';
+
+const renderTextField = ({input, label, meta: {touched, error}, ...custom}) => (
+  <TextField
+    hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  />
+);
 
 const LoginForm = props => {
   const {
@@ -8,35 +20,37 @@ const LoginForm = props => {
     reset,
     submitting
   } = props;
-  
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <div className="Login-container">
+      <form onSubmit={handleSubmit} className="Login-form">
         <div>
-          <Field
-            name="email"
-            component="input"
-            type="email"
-            placeholder="Email"
-          />
+          <div>
+            <Field
+              name="email"
+              component={renderTextField}
+              type="email"
+              placeholder="Email"
+            />
+          </div>
+          <div>
+            <Field
+              name="password"
+              component="input"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
         </div>
         <div>
-          <Field
-            name="password"
-            component="input"
-            type="password"
-            placeholder="Password"
-          />
+          <button
+            type="submit"
+            disabled={pristine || submitting}>
+            Submit
+          </button>
         </div>
-      </div>
-      <div>
-        <button
-          type="submit"
-          disabled={pristine || submitting}>
-          Submit
-        </button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

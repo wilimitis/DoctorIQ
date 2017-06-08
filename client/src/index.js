@@ -8,17 +8,23 @@ import {
   Redirect,
   withRouter
 } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Card } from 'material-ui/Card';
 import store from './reducers/store';
-import LoginPage from './containers/LoginPage';
+import Login from './containers/Login';
 import './index.css';
 
 const root = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>
-      <LoginPage />
-    </div>
+    <Router>
+      <MuiThemeProvider>
+        <Card className="Login-card">
+          <Login />
+        </Card>
+      </MuiThemeProvider>
+    </Router>
   </Provider>,
   root,
 );
