@@ -2,8 +2,8 @@ export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
-export function loginSubmit(user) {
-  return { type: LOGIN_SUBMIT, user };
+export function loginSubmit(req) {
+  return { type: LOGIN_SUBMIT, req };
 };
 
 export function loginFailure(res) {
@@ -11,5 +11,5 @@ export function loginFailure(res) {
 };
 
 export function loginSuccess(res) {
-  return { type: LOGIN_SUCCESS, res }; 
+  return { type: LOGIN_SUCCESS, res };
 };
