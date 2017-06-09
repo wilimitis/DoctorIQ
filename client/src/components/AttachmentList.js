@@ -2,7 +2,6 @@ import React from 'react';
 import { List, ListItem } from 'material-ui/List';
 
 export default props => {
-  console.log(props);
   const attachments = props.attachments ? props.attachments.map(attachment =>
     <ListItem key={attachment.id} primaryText={`Name: ${attachment.name}`} secondaryText={`Size:${attachment.size}`} />
   ) : (

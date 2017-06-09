@@ -17,9 +17,10 @@ export function uploadFail(err) {
   };
 };
 
-export function uploadDocumentRequest(file) {
+export function uploadDocumentRequest(file, userId = 0) {
   let data = new FormData();
   data.append('file', file);
+  data.append('userId', userId)
 
   return (dispatch) => {
     axios.post('/attachments', data)

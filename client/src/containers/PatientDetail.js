@@ -8,11 +8,12 @@ import {
   withRouter,
   Switch
 } from 'react-router-dom';
-import { Card} from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import { patientDetailSubmit } from '../actions/patientDetailActions';
 import PatientDetailOverview from '../components/PatientDetailOverview';
 import PatientDetailSchedule from '../components/PatientDetailSchedule';
 import Attachments from '../containers/Attachments';
+import { uploadDocumentRequest } from '../actions/attachmentUploadActions';
 
 class PatientDetail extends Component {
   componentDidMount() {
@@ -51,7 +52,7 @@ class PatientDetail extends Component {
               <Route exact path={`/patients/:id/schedule`} render={
                 () => <PatientDetailSchedule patient={this.props.patient} /> } />
               <Route exact path={`/patients/:id/attachments`} render={
-                () => <Attachments />} />
+                () => <Attachments attachments={this.props.attachments} handleFileUpload={this.props.handleFileUpload} />} />
             </Switch>
           </div>
         </Card>
@@ -63,14 +64,28 @@ class PatientDetail extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     patient: state.patientDetail.patient,
-    grant: state.auth.grant
+    attachments: state.patientDetail.attachments,
+    grant: state.auth.grant,
+    id: state.auth.id
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    dispatch
+    dispatch,
+    handleFileUpload: (file) => {
+      dispatch(uploadDocumentRequest(file));
+    }
   };
+};
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const { id } = stateProps;
+
+  return {
+    ...ownProps,
+    
+  }
 };
 
 export default connect(

@@ -4,7 +4,7 @@ import AttachmentList from '../components/AttachmentList';
 import AttachmentUpload from '../components/AttachmentUpload';
 import { uploadDocumentRequest } from '../actions/attachmentUploadActions';
 
-const Attachments = props => {
+export default props => {
   const {
     handleFileUpload,
     attachments
@@ -17,22 +17,3 @@ const Attachments = props => {
     </div>
   );
 };
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    attachments: state.patientDetail.patient.attachments
-  };
-};
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    handleFileUpload: (file) => {
-      dispatch(uploadDocumentRequest(file));
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Attachments);

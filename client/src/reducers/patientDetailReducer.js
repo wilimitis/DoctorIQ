@@ -6,16 +6,23 @@ import {
 } from '../actions/attachmentUploadActions';
 
 const initialState = {
-  patient: {
-    attachments: null
-  }
+  patient: null,
+  attachments: null
 };
 
 function patientDetailReducer(state = initialState, action) {
   switch(action.type) {
     case PATIENT_DETAIL_SUCCESS:
       return Object.assign({}, state, {
-        patient: action.patient
+        patient: action.patient,
+        attachments: action.patient.attachments.map(a => {
+          return {
+            id: data.filename,
+            name: data.originalname,
+            size: data.size,
+            path: data.path
+          };
+        })
       });
     case UPLOAD_DOCUMENT_SUCCESS:
       const data = action.res.data;
@@ -25,8 +32,11 @@ function patientDetailReducer(state = initialState, action) {
         size: data.size,
         path: data.path
       };
-      state.patient.attachments.push(attachment);
-      return Object.assign({}, state);
+
+      const attachments = [...state.attachments, attachment]
+      return Object.assign({}, state, {
+        attachments
+      });
     default:
       return state;
   }

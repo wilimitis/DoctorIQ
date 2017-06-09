@@ -9,6 +9,7 @@ var multer = require('multer');
 var index = require('./routes/index');
 var token = require('./routes/token');
 var patients = require('./routes/patients');
+var patientsDb = require('./data/patients').patientDetails;
 
 var app = express();
 if (app.get('env') !== 'production') {
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/attachments', express.static(path.join(__dirname, 'attachments')));
 
 app.use('/', index);
 app.use('/token', token);
@@ -35,7 +37,11 @@ const upload = multer({ dest: 'attachments/' });
 app.post('/attachments', upload.single('file'), (req, res) => {
   const file = req.file;
   const meta = req.body;
-  console.log(file, meta);
+  
+  // Simulate db update
+  let user = patientsDb[req.body.userId];
+  patientsDb[req.body.userId].attachments = [...user.attachments, file];
+
   res.json(file);
 });
 
