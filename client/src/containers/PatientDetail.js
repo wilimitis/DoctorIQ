@@ -14,7 +14,7 @@ import { patientDetailSubmit } from '../actions/patientDetailActions';
 import PatientDetailOverview from '../components/PatientDetailOverview';
 import PatientDetailSchedule from '../components/PatientDetailSchedule';
 import Attachments from '../containers/Attachments';
-import { uploadDocumentRequest } from '../actions/attachmentUploadActions';
+import { uploadDocumentRequest, deleteDocumentRequest } from '../actions/attachmentUploadActions';
 
 class PatientDetail extends Component {
   componentDidMount() {
@@ -53,7 +53,11 @@ class PatientDetail extends Component {
               <Route exact path={`/patients/:id/schedule`} render={
                 () => <PatientDetailSchedule patient={this.props.patient} /> } />
               <Route exact path={`/patients/:id/attachments`} render={
-                () => <Attachments attachments={this.props.attachments} handleFileUpload={this.props.handleFileUpload} handleClick={this.props.handleClick} /> } />
+                () => <Attachments 
+                        attachments={this.props.attachments} 
+                        handleFileUpload={this.props.handleFileUpload} 
+                        handleClick={this.props.handleClick} 
+                        handleDelete={this.props.handleDelete} /> } />
             </Switch>
           </div>
         </Card>
@@ -79,6 +83,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     handleClick: (e, path, name) => {
       download(`${window.location.origin}/${path}`.replace('\\', '/'), name);
+    },
+    handleDelete: (e, path) => {
+      dispatch(deleteDocumentRequest(path, ownProps.match.params.id));
     }
   };
 };

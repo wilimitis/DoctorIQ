@@ -9,7 +9,7 @@ export default props => {
       <button onClick={(e) => props.handleDelete(e, attachment.path)}>delete</button>
     </li>
   ) : (
-    <li key="none" primaryText="loading..." ></li>
+    <li key="none">...</li>
   );
   
   return (

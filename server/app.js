@@ -32,7 +32,7 @@ app.use('/', index);
 app.use('/token', token);
 app.use('/patients', patients);
 
-// File upload
+// File upload/delete
 const upload = multer({ dest: 'attachments/' });
 app.post('/attachments', upload.single('file'), (req, res) => {
   const file = req.file;
@@ -43,6 +43,15 @@ app.post('/attachments', upload.single('file'), (req, res) => {
   patientsDb[req.body.userId].attachments = [...user.attachments, file];
   console.log(file);
   res.json(file);
+});
+
+app.delete('/attachments', (req, res) => {
+
+  // Simulate db removal
+  let user = patientsDb[req.body.userId];
+  patientsDb[req.body.userId].attachments = [...user.attachments.filter(a => a.path !== req.body.path)];
+
+  res.sendStatus(204);
 });
 
 // catch 404 and forward to error handler

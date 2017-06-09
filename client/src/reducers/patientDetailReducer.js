@@ -2,7 +2,8 @@ import {
   PATIENT_DETAIL_SUCCESS
 } from '../actions/patientDetailActions';
 import {
-  UPLOAD_DOCUMENT_SUCCESS
+  UPLOAD_DOCUMENT_SUCCESS,
+  DELETE_DOCUMENT_SUCCESS
 } from '../actions/attachmentUploadActions';
 
 const initialState = {
@@ -34,10 +35,12 @@ function patientDetailReducer(state = initialState, action) {
         size: data.size,
         path: data.path
       };
-
-      const attachments = [...state.attachments, attachment]
       return Object.assign({}, state, {
-        attachments
+        attachments: [...state.attachments, attachment]
+      });
+    case DELETE_DOCUMENT_SUCCESS:
+      return Object.assign({}, state, {
+        attachments: [...state.attachments.filter(a => a.path !== action.path)]
       });
     default:
       return state;
