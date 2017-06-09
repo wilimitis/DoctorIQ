@@ -9,12 +9,13 @@ export default props => {
     handleFileUpload,
     handleClick,
     handleDelete,
-    attachments
+    attachments,
+    grant
   } = props;
 
   return (
     <div>
-      <AttachmentList attachments={attachments} handleClick={handleClick} handleDelete={handleDelete}/>
+      <AttachmentList attachments={attachments} handleClick={handleClick} handleDelete={handleDelete} grant={grant}/>
       <AttachmentUpload handleFileUpload={handleFileUpload}/>
     </div>
   );

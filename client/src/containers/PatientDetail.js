@@ -57,7 +57,8 @@ class PatientDetail extends Component {
                         attachments={this.props.attachments} 
                         handleFileUpload={this.props.handleFileUpload} 
                         handleClick={this.props.handleClick} 
-                        handleDelete={this.props.handleDelete} /> } />
+                        handleDelete={this.props.handleDelete} 
+                        grant={this.props.grant} /> } />
             </Switch>
           </div>
         </Card>

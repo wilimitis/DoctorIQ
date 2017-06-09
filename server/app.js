@@ -45,8 +45,8 @@ app.post('/attachments', upload.single('file'), (req, res) => {
   res.json(file);
 });
 
-app.delete('/attachments', (req, res) => {
-
+app.post('/attachments/delete', (req, res) => {
+  console.log(req.body);
   // Simulate db removal
   let user = patientsDb[req.body.userId];
   patientsDb[req.body.userId].attachments = [...user.attachments.filter(a => a.path !== req.body.path)];

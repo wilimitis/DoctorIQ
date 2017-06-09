@@ -48,7 +48,7 @@ export function uploadDocumentRequest(file, userId) {
 
 export function deleteDocumentRequest(path, userId) {
   return (dispatch) => {
-    axios.delete('/attachments', path)
+    axios.post('/attachments/delete', { path, userId })
       .then(res => dispatch(deleteSuccess(res, path)))
       .catch(err => dispatch(deleteFail(err)));
   };

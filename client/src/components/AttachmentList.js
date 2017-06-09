@@ -6,7 +6,11 @@ export default props => {
     <li key={attachment.path}>
       {`Name: ${attachment.name}`} <br /> {`Size:${attachment.size}`} <br />
       <button onClick={(e) => props.handleClick(e, attachment.path, attachment.name)}>download</button>
-      <button onClick={(e) => props.handleDelete(e, attachment.path)}>delete</button>
+      { 
+        props.grant === 'doctor' 
+        ? <button onClick={(e) => props.handleDelete(e, attachment.path)}>delete</button>
+        : null
+      }
     </li>
   ) : (
     <li key="none">...</li>
