@@ -17,6 +17,7 @@ cd client
 npm install
 npm run start
 ```
+Credentials: https://github.com/wilimitis/DoctorIQ/blob/master/server/data/users.js
 
 *If your browser does not open to localhost:3001 automagically then you may have to do so manually*
 
