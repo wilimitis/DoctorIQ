@@ -12,7 +12,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import configureStore from './reducers/configureStore';
 import Login from './containers/Login';
-import Patients from './containers/Patients';
+import PatientSearch from './containers/PatientSearch';
+import PatientDetail from './containers/PatientDetail';
 import './index.css';
 
 injectTapEventPlugin();
@@ -27,7 +28,8 @@ ReactDOM.render(
       <Router>
         <div>
           <Route exact path="/" component={Login} />
-          <Route path="/patients" component={Patients} />
+          <Route exact path="/patients" component={PatientSearch} />
+          <Route path="/patients/:id" component={PatientDetail} />
         </div>
       </Router>
     </MuiThemeProvider>

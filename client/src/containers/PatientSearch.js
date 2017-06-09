@@ -4,7 +4,7 @@ import { patientSearchSubmit } from '../actions/patientSearchActions';
 import PatientSearchInput from '../components/PatientSearchInput';
 import PatientSearchTable from '../components/PatientSearchTable';
 
-class Patients extends Component {
+class PatientSearch extends Component {
   componentDidMount() {
     this.props.dispatch(patientSearchSubmit());
   }
@@ -35,11 +35,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     handleChange: (event) => {
       console.log(event.target.value);
       dispatch(patientSearchSubmit(event.target.value));
-    }, dispatch
+    },
+    dispatch
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Patients);
+)(PatientSearch);

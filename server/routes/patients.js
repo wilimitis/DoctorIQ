@@ -4,10 +4,12 @@ const router = require('express').Router();
 router.get('/', function(req, res, next) {
   res.json([
     {
+      id: 1,
       name: 'asdfsadf',
       age: 21
     },
     {
+      id: 2,
       name: 'qwerqwer',
       age: 69
     }

@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { Card } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import 'react-table/react-table.css'
+import MdEdit from 'react-icons/lib/md/edit';
+import { Link } from 'react-router-dom';
+import 'react-table/react-table.css';
 
 const PatientTable = props => {
   const {
@@ -23,14 +24,19 @@ const PatientTable = props => {
             accessor: 'age',
             width: 100
           }, {
-            Header: 'Action',
+            Header: '',
             accessor: 'action',
-            width: 100,
-            Cell: row => (
-              <RaisedButton>
-                Detail
-              </RaisedButton>
-            )
+            width: 70,
+            Cell: row => {
+              console.log(row);
+              return (
+                <div style={{textAlign: 'center'}}>
+                  <Link to={`patients/${row.original.id}`}>
+                    <MdEdit style={{cursor: 'pointer'}}/>
+                  </Link>
+                </div>
+              )
+            }
           }]}
           sortable={false}
           defaultPageSize={10}

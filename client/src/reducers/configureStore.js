@@ -4,16 +4,20 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import thunkMiddleware from 'redux-thunk';
 import authReducer from './authReducer';
 import patientSearchReducer from './patientSearchReducer';
+import patientDetailReducer from './patientDetailReducer';
 import patientSearchEpic from '../epics/patientSearchEpic';
+import patientDetailEpic from '../epics/patientDetailEpic';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   form: reduxFormReducer,
-  patientSearch: patientSearchReducer
+  patientSearch: patientSearchReducer,
+  patientDetail: patientDetailReducer
 });
 
 const rootEpic = combineEpics(
-  patientSearchEpic
+  patientSearchEpic,
+  patientDetailEpic
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
