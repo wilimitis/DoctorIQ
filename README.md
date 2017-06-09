@@ -18,6 +18,8 @@ npm install
 npm run start
 ```
 
+*If your browser does not open to localhost:3001 automagically then you may have to do so manually*
+
 ### Features
 Patient  
 ![](https://media.giphy.com/media/3o7btLEb0OY31tUccU/giphy.gif)
@@ -40,7 +42,14 @@ _Client_
 _Server_  
 - Token based endpoint to serve consumable JWT
   - Grant-based token to differentiate b/w doctor and patient
-  
+- RESTful endpoints with query params to support naive search model
+
+### Assumptions
+1. Given the nature of patient data and the desire to avoid search collisions, the search functionality should be more robust than, say, a google-esque dropdown that shows you nearby pizza joints. Therefore, a table with sorting and pageable funtionality was implemented, but was then scaled back due to time constraints.
+2. Given assumption 1, separating the search from the patient SPA is desirable as it declutters the screen while still providing a quick, intuitive transition.
+3. The most desiriable way to manage scheduling appoints would be through a calendar widget that supports scanning through time frames at different grains. Would base this decision on user feedback in true dev scenario.
+4. Cross-browser compat can be evaluated at a later time when granted better access to test environment simulation and tooling.
+
 ### Remaining
 _Client_  
 - Use private routing to ensure grant enforces which pages are accessible
