@@ -9,6 +9,7 @@ import {
   Switch
 } from 'react-router-dom';
 import { Card } from 'material-ui/Card';
+import download from 'downloadjs';
 import { patientDetailSubmit } from '../actions/patientDetailActions';
 import PatientDetailOverview from '../components/PatientDetailOverview';
 import PatientDetailSchedule from '../components/PatientDetailSchedule';
@@ -52,7 +53,7 @@ class PatientDetail extends Component {
               <Route exact path={`/patients/:id/schedule`} render={
                 () => <PatientDetailSchedule patient={this.props.patient} /> } />
               <Route exact path={`/patients/:id/attachments`} render={
-                () => <Attachments attachments={this.props.attachments} handleFileUpload={this.props.handleFileUpload} />} />
+                () => <Attachments attachments={this.props.attachments} handleFileUpload={this.props.handleFileUpload} handleClick={this.props.handleClick} /> } />
             </Switch>
           </div>
         </Card>
@@ -74,7 +75,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     dispatch,
     handleFileUpload: (file) => {
-      dispatch(uploadDocumentRequest(file));
+      dispatch(uploadDocumentRequest(file, ownProps.match.params.id));
+    },
+    handleClick: (e, path, name) => {
+      download(`${window.location.origin}/${path}`.replace('\\', '/'), name);
     }
   };
 };

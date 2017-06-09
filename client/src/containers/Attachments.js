@@ -7,12 +7,13 @@ import { uploadDocumentRequest } from '../actions/attachmentUploadActions';
 export default props => {
   const {
     handleFileUpload,
+    handleClick,
     attachments
   } = props;
 
   return (
     <div>
-      <AttachmentList attachments={attachments}/>
+      <AttachmentList attachments={attachments} handleClick={handleClick}/>
       <AttachmentUpload handleFileUpload={handleFileUpload}/>
     </div>
   );

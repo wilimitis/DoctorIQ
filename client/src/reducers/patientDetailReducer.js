@@ -15,14 +15,16 @@ function patientDetailReducer(state = initialState, action) {
     case PATIENT_DETAIL_SUCCESS:
       return Object.assign({}, state, {
         patient: action.patient,
-        attachments: action.patient.attachments.map(a => {
-          return {
-            id: data.filename,
-            name: data.originalname,
-            size: data.size,
-            path: data.path
-          };
-        })
+        attachments: action.patient.attachments
+          .filter(a => a !== null)
+          .map(a => {
+            return {
+              id: a.filename,
+              name: a.originalname,
+              size: a.size,
+              path: a.path
+            };
+          })
       });
     case UPLOAD_DOCUMENT_SUCCESS:
       const data = action.res.data;

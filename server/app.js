@@ -41,7 +41,7 @@ app.post('/attachments', upload.single('file'), (req, res) => {
   // Simulate db update
   let user = patientsDb[req.body.userId];
   patientsDb[req.body.userId].attachments = [...user.attachments, file];
-
+  console.log(file);
   res.json(file);
 });
 

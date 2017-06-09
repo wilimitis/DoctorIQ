@@ -3,14 +3,18 @@ import { List, ListItem } from 'material-ui/List';
 
 export default props => {
   const attachments = props.attachments ? props.attachments.map(attachment =>
-    <ListItem key={attachment.id} primaryText={`Name: ${attachment.name}`} secondaryText={`Size:${attachment.size}`} />
+    <li key={attachment.path}>
+      {`Name: ${attachment.name}`} <br /> {`Size:${attachment.size}`} <br />
+      <button onClick={(e) => props.handleClick(e, attachment.path, attachment.name)}>download</button>
+      <button onClick={(e) => props.handleDelete(e, attachment.path)}>delete</button>
+    </li>
   ) : (
-    <ListItem key="none" primaryText="loading..." />
+    <li key="none" primaryText="loading..." ></li>
   );
-
+  
   return (
-    <List>
+    <ul>
       {attachments}
-    </List>
+    </ul>
   );
 };

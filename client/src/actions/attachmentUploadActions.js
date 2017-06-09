@@ -17,7 +17,7 @@ export function uploadFail(err) {
   };
 };
 
-export function uploadDocumentRequest(file, userId = 0) {
+export function uploadDocumentRequest(file, userId) {
   let data = new FormData();
   data.append('file', file);
   data.append('userId', userId)
