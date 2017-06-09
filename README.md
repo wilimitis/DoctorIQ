@@ -3,7 +3,7 @@
 ### Submission for Javascript Coding Challenge
 Received on 6/7/2017, to be completed by 6/13/2017
 
-### Install
+### Startup
 To run the server, ensure port 3000 is free on localhost and
 ```
 cd server
