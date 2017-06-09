@@ -42,7 +42,10 @@ _Client_
 - Use private routing to ensure grant enforces which pages are accessible
 - Include auth token in common interceptor/middleware
 - Implement file upload functionality
+  - Create epic to retrieve file list, possibly infinite scroller/paged
 - Implement schedule edit functionality
+  - Create modal to view appointment details and cancel requests
+  - Create modal to post new appointment
 - Finish unit testing endpoint logic
 
 _Server_  
