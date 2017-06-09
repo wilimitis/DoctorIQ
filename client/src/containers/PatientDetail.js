@@ -12,6 +12,7 @@ import { Card} from 'material-ui/Card';
 import { patientDetailSubmit } from '../actions/patientDetailActions';
 import PatientDetailOverview from '../components/PatientDetailOverview';
 import PatientDetailSchedule from '../components/PatientDetailSchedule';
+import Attachments from '../containers/Attachments';
 
 class PatientDetail extends Component {
   componentDidMount() {
@@ -50,7 +51,7 @@ class PatientDetail extends Component {
               <Route exact path={`/patients/:id/schedule`} render={
                 () => <PatientDetailSchedule patient={this.props.patient} /> } />
               <Route exact path={`/patients/:id/attachments`} render={
-                () => <h3>attachments</h3>} />
+                () => <Attachments />} />
             </Switch>
           </div>
         </Card>

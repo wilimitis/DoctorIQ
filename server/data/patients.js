@@ -51,10 +51,6 @@ module.exports.patientDetails = [
       }
     ],
     attachments: [
-      {
-        name: 'report 1',
-        path: 'dropbox/sdkfjn32'
-      }
     ]
   },
   {
@@ -84,10 +80,6 @@ module.exports.patientDetails = [
       }
     ],
     attachments: [
-      {
-        name: 'report 1',
-        path: 'dropbox/sdkfjn32'
-      }
     ]
   }
 ];

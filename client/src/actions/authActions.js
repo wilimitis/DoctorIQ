@@ -5,7 +5,6 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export function loginSubmit(req) {
-  console.log(req);
   return dispatch => {
     return axios.post('token', req)
       .then(res => dispatch(loginSuccess(res.data)))

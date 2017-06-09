@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 var index = require('./routes/index');
 var token = require('./routes/token');
@@ -28,6 +29,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/token', token);
 app.use('/patients', patients);
+
+// File upload
+const upload = multer({ dest: 'attachments/' });
+app.post('/attachments', upload.single('file'), (req, res) => {
+  const file = req.file;
+  const meta = req.body;
+  console.log(file, meta);
+  res.json(file);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
