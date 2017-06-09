@@ -20,10 +20,10 @@ npm run start
 
 ### Features
 Patient  
-![](https://giphy.com/gifs/3o7btLEb0OY31tUccU)
+![](https://media.giphy.com/media/3o7btLEb0OY31tUccU/giphy.gif)
 
 Doctor  
-![](https://giphy.com/gifs/3o7bu9uizaL9XHtSBa)
+![](https://media.giphy.com/media/3o7bu9uizaL9XHtSBa/giphy.gif)
 
 ### Overview
 Two primary code bases
