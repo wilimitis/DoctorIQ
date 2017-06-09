@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { patientSearchSubmit } from '../actions/patientSearchActions';
 import PatientSearchInput from '../components/PatientSearchInput';
 import PatientSearchTable from '../components/PatientSearchTable';
 
-const Patients = props => {
-  const {
-    handleChange,
-    data,
-    loading
-  } = props;
+class Patients extends Component {
+  componentDidMount() {
+    this.props.dispatch(patientSearchSubmit());
+  }
 
-  return (
-    <div>
-      <h2>Patients</h2>
-      <PatientSearchInput handleChange={handleChange} />
-      <PatientSearchTable
-        data={data}
-        loading={loading}
-      />
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <h2>Patients</h2>
+        <PatientSearchInput handleChange={this.props.handleChange} />
+        <PatientSearchTable
+          data={this.props.data}
+          loading={this.props.loading}
+        />
+      </div>
+    );
+  };
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     handleChange: (event) => {
       console.log(event.target.value);
       dispatch(patientSearchSubmit(event.target.value));
-    }
+    }, dispatch
   };
 };
 

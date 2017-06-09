@@ -7,7 +7,6 @@ import 'react-table/react-table.css'
 const PatientTable = props => {
   const {
     data,
-    pages,
     loading
   } = props;
 
@@ -21,7 +20,8 @@ const PatientTable = props => {
             accessor: 'name',
           }, {
             Header: 'Age',
-            accessor: 'age'
+            accessor: 'age',
+            width: 100
           }, {
             Header: 'Action',
             accessor: 'action',

@@ -9,10 +9,13 @@ import {
   withRouter
 } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import configureStore from './reducers/configureStore';
 import Login from './containers/Login';
 import Patients from './containers/Patients';
 import './index.css';
+
+injectTapEventPlugin();
 
 const root = document.getElementById('root');
 
