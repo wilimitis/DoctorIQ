@@ -20,6 +20,9 @@ const PatientTable = props => {
             Header: 'Name',
             accessor: 'name',
           }, {
+            Header: 'Email',
+            accessor: 'email'
+          }, {
             Header: 'Age',
             accessor: 'age',
             width: 100

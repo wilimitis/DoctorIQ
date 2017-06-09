@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
-const PatientSearch = props => {
+export default props => {
   const {
     handleChange
   } = props;
@@ -17,5 +17,3 @@ const PatientSearch = props => {
     </Card>
   );
 };
-
-export default PatientSearch;
