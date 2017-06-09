@@ -4,7 +4,13 @@ const patientDetails = require('../data/patients').patientDetails;
 
 /* GET patients list */
 router.get('/list', (req, res, next) => {
-  res.json(patients);
+  const name = req.query.name;
+
+  if (name) {
+    res.json(patients.filter(p => p.name.toLowerCase().includes(name.toLowerCase())));
+  } else {
+    res.json(patients);
+  }
 });
 
 /* GET patients by id */

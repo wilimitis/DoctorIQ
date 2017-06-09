@@ -9,12 +9,14 @@ const Login = props => {
   const {
     isAuthenticated,
     handleSubmit,
-    error
+    error,
+    grant,
+    id
   } = props;
 
   return (
     isAuthenticated ? (
-      <Redirect to="/patients" />
+      <Redirect to={grant === "doctor" ? "/patients" : `/patients/${id}`} />
     ) : (
     <Card className="Login-card">
       <h2>Welcome to DoctorIQ</h2>
@@ -34,7 +36,9 @@ const Login = props => {
 const mapStateToProps = (state, ownProps) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.auth.error
+    error: state.auth.error,
+    grant: state.auth.grant,
+    id: state.auth.id
   };
 };
 

@@ -10,7 +10,7 @@ const patientSearchEpic = action$ =>
   action$.ofType(PATIENT_SEARCH_SUBMIT)
     .debounceTime(750)
     .switchMap(action => {
-      return ajax.getJSON(`/patients/list`)
+      return ajax.getJSON(`/patients/list?name=${action.req || ''}`)
     })
     .map(res => {
       if (res)

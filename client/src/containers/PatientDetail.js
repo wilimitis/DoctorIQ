@@ -32,7 +32,11 @@ class PatientDetail extends Component {
         <Card>
           <div className="navbar">
             <ul className="header">
-              <li><Link style={{color: '#777'}} to={paths.patients}>patients</Link></li>
+              {
+                this.props.grant === 'doctor'
+                  ? <li><Link style={{color: '#777'}} to={paths.patients}>patients</Link></li>
+                  : null
+              }
               <li><Link to={paths.overview}>overview</Link></li>
               <li><Link to={paths.schedule}>schedule</Link></li>
               <li><Link to={paths.attachments}>attachments</Link></li>
@@ -57,7 +61,8 @@ class PatientDetail extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    patient: state.patientDetail.patient
+    patient: state.patientDetail.patient,
+    grant: state.auth.grant
   };
 };
 

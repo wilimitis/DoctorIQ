@@ -10,7 +10,6 @@ const initialState = {
 };
 
 function authReducer(state = initialState, action) {
-  console.log(state, action);
   switch (action.type) {
     case LOGIN_SUBMIT:
     case LOGIN_FAILURE:
@@ -19,7 +18,9 @@ function authReducer(state = initialState, action) {
       });
     case LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        token: action.res,
+        token: action.res.token,
+        grant: action.res.grant,
+        id: action.res.id,
         isAuthenticated: true
       });
     default:

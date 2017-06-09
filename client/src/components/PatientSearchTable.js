@@ -28,7 +28,6 @@ const PatientTable = props => {
             accessor: 'action',
             width: 70,
             Cell: row => {
-              console.log(row);
               return (
                 <div style={{textAlign: 'center'}}>
                   <Link to={`/patients/${row.original.id}`}>
