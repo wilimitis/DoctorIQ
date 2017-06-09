@@ -38,11 +38,13 @@ _Client_
 - Reactive X (RxJs) to simplify async logic and blend results into redux architecture
 - Webpack to bundle assets and thin out memory footprint of deployment
 - Babel to transpile newer javascript functionality for cross-browser compat
+- Unit tests with Jest, Enzyme
 
 _Server_  
 - Token based endpoint to serve consumable JWT
   - Grant-based token to differentiate b/w doctor and patient
 - RESTful endpoints with query params to support naive search model
+- Unit tests with Mocha, Chai, Supertest
 
 ### Assumptions
 1. Given the nature of patient data and the desire to avoid search collisions, the search functionality should be more robust than, say, a google-esque dropdown that shows you nearby pizza joints. Therefore, a table with sorting and pageable funtionality was implemented, but was then scaled back due to time constraints.
