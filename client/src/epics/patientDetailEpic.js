@@ -9,11 +9,12 @@ import {
 const patientDetailEpic = action$ =>
   action$.ofType(PATIENT_DETAIL_SUBMIT)
     .switchMap(action => {
-      return ajax.getJSON(`${action.id}`)
+      return ajax.getJSON(`/patients/?id=${action.id}`)
     })
     .map(res => {
+      console.log(res);
       if (res)
-        return { type: PATIENT_DETAIL_SUCCESS, patients: res}
+        return { type: PATIENT_DETAIL_SUCCESS, patient: res}
       else
         throw new Error('Network response was not ok.');
     })

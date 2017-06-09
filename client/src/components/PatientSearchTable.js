@@ -31,7 +31,7 @@ const PatientTable = props => {
               console.log(row);
               return (
                 <div style={{textAlign: 'center'}}>
-                  <Link to={`patients/${row.original.id}`}>
+                  <Link to={`/patients/${row.original.id}`}>
                     <MdEdit style={{cursor: 'pointer'}}/>
                   </Link>
                 </div>

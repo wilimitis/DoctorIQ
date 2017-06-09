@@ -1,19 +1,22 @@
 const router = require('express').Router();
+const patients = require('../data/patients').patients;
+const patientDetails = require('../data/patients').patientDetails;
 
-/* GET patients */
-router.get('/', function(req, res, next) {
-  res.json([
-    {
-      id: 1,
-      name: 'asdfsadf',
-      age: 21
-    },
-    {
-      id: 2,
-      name: 'qwerqwer',
-      age: 69
-    }
-  ]);
+/* GET patients list */
+router.get('/list', (req, res, next) => {
+  res.json(patients);
+});
+
+/* GET patients by id */
+router.get('/', (req, res, next) => {
+  const patient = patientDetails[req.query.id];
+
+  if (patient) {
+    res.json(patient);
+  }
+  else {
+    res.sendStatus(404).end();
+  }
 });
 
 module.exports = router;

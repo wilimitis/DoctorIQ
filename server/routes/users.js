@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+const router = require('express').Router();
+const users =  require('../data/users');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({token: 'iu2938d23dui', grant: 'doctor'});
+router.post('/', (req, res, next) => {
+  // Would prefer to use bcrypt and keep hashes only
+  const user = users.find(u =>
+    u.email === req.body.email && u.password === req.body.password);
+
+  if (user) {
+    res.json({token: 'iu2938d23dui', grant: user.grant});
+  } else {
+    res.sendStatus(401).end();
+  }
 });
 
 module.exports = router;

@@ -5,7 +5,10 @@
   "dependencies": {
     "history": "^4.6.1",
     "material-ui": "^0.18.3",
+    "moment": "^2.18.1",
     "react": "^15.5.4",
+    "react-big-calendar": "^0.14.0",
+    "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5",
     "react-redux": "^5.0.5",

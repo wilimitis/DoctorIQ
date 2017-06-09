@@ -5,10 +5,13 @@ import {
   Route,
   Link,
   Redirect,
-  withRouter
+  withRouter,
+  Switch
 } from 'react-router-dom';
 import { Card} from 'material-ui/Card';
 import { patientDetailSubmit } from '../actions/patientDetailActions';
+import PatientDetailOverview from '../components/PatientDetailOverview';
+import PatientDetailSchedule from '../components/PatientDetailSchedule';
 
 class PatientDetail extends Component {
   componentDidMount() {
@@ -16,24 +19,38 @@ class PatientDetail extends Component {
   }
 
   render() {
-    const root = this.props.location.pathname;
-    return (
-      <Router>
-        <div>
-          <Card>
-            <h2>{this.props.match.id}</h2>
-            <ul className="header">
-              <li><Link to={`${root}`}>information</Link></li>
-              <li><Link to={`${root}/schedule`}>schedule</Link></li>
-              <li><Link to={`${root}/attachments`}>attachments</Link></li>
-            </ul>
+    const id = this.props.match.params.id,
+      paths = {
+        patients: "/patients",
+        overview: `/patients/${id}`,
+        schedule: `/patients/${id}/schedule`,
+        attachments: `/patients/${id}/attachments`
+      };
 
-            <Route exact path={`${root}`} render={() => <h3>information</h3>} />
-            <Route exact path={`${root}/schedule`} render={() => <h3>schedule</h3>} />
-            <Route exact path={`${root}/attachments`} render={() => <h3>attachments</h3>} />
-          </Card>
-        </div>
-      </Router>
+    return (
+      <div>
+        <Card>
+          <div className="navbar">
+            <ul className="header">
+              <li><Link style={{color: '#777'}} to={paths.patients}>patients</Link></li>
+              <li><Link to={paths.overview}>overview</Link></li>
+              <li><Link to={paths.schedule}>schedule</Link></li>
+              <li><Link to={paths.attachments}>attachments</Link></li>
+            </ul>
+          </div>
+
+          <div style={{padding: '1em'}}>
+            <Switch>
+              <Route exact path={`/patients/:id`} render={
+                () => <PatientDetailOverview patient={this.props.patient} /> } />
+              <Route exact path={`/patients/:id/schedule`} render={
+                () => <PatientDetailSchedule patient={this.props.patient} /> } />
+              <Route exact path={`/patients/:id/attachments`} render={
+                () => <h3>attachments</h3>} />
+            </Switch>
+          </div>
+        </Card>
+      </div>
     );
   }
 }

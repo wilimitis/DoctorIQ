@@ -6,7 +6,8 @@ import {
   Route,
   Link,
   Redirect,
-  withRouter
+  withRouter,
+  Switch
 } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -26,11 +27,13 @@ ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>
       <Router>
-        <div>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/patients" component={PatientSearch} />
-          <Route path="/patients/:id" component={PatientDetail} />
-        </div>
+        <main>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/patients" component={PatientSearch} />
+            <Route path="/patients/:id" component={PatientDetail} />
+          </Switch>
+        </main>
       </Router>
     </MuiThemeProvider>
   </Provider>,
