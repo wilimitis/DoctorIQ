@@ -12,7 +12,6 @@ const patientDetailEpic = action$ =>
       return ajax.getJSON(`/patients/?id=${action.id}`)
     })
     .map(res => {
-      console.log(res);
       if (res)
         return { type: PATIENT_DETAIL_SUCCESS, patient: res}
       else

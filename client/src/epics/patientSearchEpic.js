@@ -8,7 +8,7 @@ import {
 
 const patientSearchEpic = action$ =>
   action$.ofType(PATIENT_SEARCH_SUBMIT)
-    .debounceTime(750)
+    //.debounceTime(750)
     .switchMap(action => {
       return ajax.getJSON(`/patients/list?name=${action.req || ''}`)
     })

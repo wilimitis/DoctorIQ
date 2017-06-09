@@ -43,7 +43,6 @@ const PatientTable = props => {
           sortable={false}
           defaultPageSize={10}
           data={data}
-          loading={loading}
         />
       </div>
     </Card>
