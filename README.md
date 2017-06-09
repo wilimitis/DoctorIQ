@@ -19,7 +19,11 @@ npm run start
 ```
 
 ### Features
+Patient  
+![](https://giphy.com/gifs/3o7btLEb0OY31tUccU)
 
+Doctor  
+![](https://giphy.com/gifs/3o7bu9uizaL9XHtSBa)
 
 ### Overview
 Two primary code bases
