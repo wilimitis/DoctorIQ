@@ -57,8 +57,6 @@ _Server_
 _Client_  
 - Use private routing to ensure grant enforces which pages are accessible
 - Include auth token in common interceptor/middleware
-- Implement file upload functionality
-  - Create epic to retrieve file list, possibly infinite scroller/paged
 - Implement schedule edit functionality
   - Create modal to view appointment details and cancel requests
   - Create modal to post new appointment
@@ -66,8 +64,6 @@ _Client_
 
 _Server_  
 - Flesh out remaining JWT auth architecture (protected endpoints)
-- Implement file upload/download endpoint
-  - Use multi-part form data to attach the file stream
 - Implement schedule POST endpoint to update/request appointments
 - Tie together with data-layer (ORM?)
 - Endpoint validation schema
